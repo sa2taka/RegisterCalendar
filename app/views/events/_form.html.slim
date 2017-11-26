@@ -7,12 +7,17 @@
         - @event.errors.full_messages.each do |message|
           li = message
 
+  p メンバー
+  = f.fields_for :members do |mem_form|
+    = render 'member_form', f: mem_form
+  = link_to_add_association 'メンバーを追加', f, :members, class: 'btn btn-default'
   .field
     = f.label :start
     = f.text_field :start, class: 'input-group date', id: 'datetimepickerPonvire'
   .field
     = f.label :end
     = f.text_field :end, class: 'input-group date', id: 'datetimepickerPonvire2'
+
   .actions = f.submit
 
 javascript:
