@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Start:
+  = @event.start
+p
+  strong End:
+  = @event.end
+
+=> link_to 'Edit', edit_event_path(@event)
+'|
+=< link_to 'Back', events_path
