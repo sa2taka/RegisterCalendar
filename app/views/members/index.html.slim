@@ -1,21 +1,25 @@
-h1 Listing members
+div.text-center
+  h1 Listing members
 
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
+div.row
+  div.col-md-6.col-md-offset-3
+    table.table
+      thead
+        tr
+          th Name
+          th
+          th
+          th
 
-  tbody
-    - @members.each do |member|
-      tr
-        td = member.name
-        td = link_to 'Show', member
-        td = link_to 'Edit', edit_member_path(member)
-        td = link_to 'Destroy', member, data: { confirm: 'Are you sure?' }, method: :delete
+      tbody
+        - @members.each do |member|
+          tr
+            td = member.name
+            td = link_to 'Show', member, class:"btn btn-info"
+            td = link_to 'Edit', edit_member_path(member), class:"btn btn-info"
+            td = button_to 'Destory', member, method: :delete, class:"btn btn-danger"
 
-br
+    br
 
-= link_to 'New Member', new_member_path
+div.text-center
+  = link_to "メンバーを追加する", new_member_path, class: "btn btn-primary"

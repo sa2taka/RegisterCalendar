@@ -1,9 +1,13 @@
-p#notice = notice
+div.row
+  div.col-md-6.col-md-offset-3
+    div.text-center
 
-p
-  strong Name:
-  = @member.name
+      h3#notice = notice
 
-=> link_to 'Edit', edit_member_path(@member)
-'|
-=< link_to 'Back', members_path
+      p
+        h2
+          strong Name:
+          = @member.name
+        => link_to 'Edit', edit_member_path(@member), class:"btn btn-info"
+        '|
+        =< link_to 'Back', members_path, class:"btn btn-info"

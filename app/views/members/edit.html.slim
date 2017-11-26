@@ -1,8 +1,9 @@
-h1 Editing member
+div.text-center
+  h1 Editing member
 
 == render 'form'
 
-=> link_to 'Show', @member
-'|
-=< link_to 'Back', members_path
-
+div.text-center
+  => link_to 'Show', @member, class: "btn btn-info"
+  '|
+  =< link_to 'Back', members_path, class: "btn btn-info"
