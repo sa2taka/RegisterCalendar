@@ -31,6 +31,8 @@ gem 'slim-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 gem 'event-calendar', :require => 'event_calendar'
 
 # gem 'capistrano-rails', group: :development
