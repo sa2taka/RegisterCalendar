@@ -1,12 +1,15 @@
-p#notice = notice
+div.row
+  div.col-md-6.col-md-offset-3
+    div.text-center
+      h3#notice = notice
 
-p
-  strong Start:
-  = @event.start
-p
-  strong End:
-  = @event.end
+      h2
+        strong Start:
+        = @event.start
+      h2
+        strong End:
+        = @event.end
 
-=> link_to 'Edit', edit_event_path(@event)
-'|
-=< link_to 'Back', events_path
+      => link_to 'Edit', edit_event_path(@event)
+      '|
+      =< link_to 'Back', events_path

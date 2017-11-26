@@ -1,23 +1,28 @@
-h1 Listing events
+div.text-center
+  h1 Listing members
 
-table
-  thead
-    tr
-      th Start
-      th End
-      th
-      th
-      th
+div.row
+  div.col-md-6.col-md-offset-3
 
-  tbody
-    - @events.each do |event|
-      tr
-        td = event.start
-        td = event.end
-        td = link_to 'Show', event
-        td = link_to 'Edit', edit_event_path(event)
-        td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
+    table.table
+      thead
+        tr
+          th Start
+          th End
+          th
+          th
+          th
 
-br
+      tbody
+        - @events.each do |event|
+          tr
+            td = event.start
+            td = event.end
+            td = link_to 'Show', event, class:"btn btn-info"
+            td = link_to 'Edit', edit_event_path(event), class:"btn btn-info"
+            td = button_to 'Destory', event, method: :delete, class:"btn btn-danger"
 
-= link_to 'New Event', new_event_path
+
+    br
+div.text-center
+  = link_to 'イベントを追加する', new_event_path, class: "btn btn-primary"
