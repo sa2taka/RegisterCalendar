@@ -8,9 +8,10 @@
           li = message
 
   p メンバー
-  = f.fields_for :event_members do |mem_form|
-    = render 'member_form', f: mem_form
-  = link_to_add_association 'メンバーを追加', f, :event_members, class: 'btn btn-default'
+  #event_members
+    = f.fields_for :event_members do |mem_form|
+      = render 'member_form', f: mem_form
+    = link_to_add_association 'メンバーを追加', f, :event_members, class: 'btn btn-default'
   .field
     = f.label :start
     = f.text_field :start, class: 'input-group date', id: 'datetimepickerPonvire'
