@@ -1,0 +1,3 @@
+.field.nested-fields
+  = f.select :member_id, options_for_select([['—', nil]] + Member.all.map{|m| [m.name, m.id]}, f.object.event_id)
+  = link_to_remove_association '削除', f, class: 'btn btn-default'
