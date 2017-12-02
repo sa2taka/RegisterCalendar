@@ -1,12 +1,12 @@
 div.text-center
-  h1 Listing members
+  h1 メンバー一覧
 
 div.row
   div.col-md-6.col-md-offset-3
     table.table
       thead
         tr
-          th Name
+          th 名前
           th
           th
           th
@@ -15,9 +15,8 @@ div.row
         - @members.each do |member|
           tr
             td = member.name
-            td = link_to 'Show', member, class:"btn btn-info"
-            td = link_to 'Edit', edit_member_path(member), class:"btn btn-info"
-            td = button_to 'Destory', member, method: :delete, class:"btn btn-danger"
+            td = button_to '修正', edit_member_path(member), class:"btn btn-info"
+            td = button_to '削除', member, method: :delete, class:"btn btn-danger"
 
     br
 
