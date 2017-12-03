@@ -9,10 +9,6 @@
     current = document.querySelector('.today')
     if current
       self = this
-      window.setTimeout (->
-        self.openDay current
-        return
-      ), 500
     return
 
   createElement = (tagName, className, innerText) ->
@@ -51,7 +47,7 @@
       @header.appendChild right
       @header.appendChild left
       @el.appendChild @header
-    @title.innerHTML = @current.format('MMMM YYYY')
+    @title.innerHTML = @current.format('YYYY MMMM')
     return
 
   Calendar::drawMonth = ->
@@ -124,9 +120,29 @@
     @getWeek day
     #Outer Day
     outer = createElement('div', @getDayClass(day))
-    outer.addEventListener 'click', ->
-      self.openDay this
+    outer.addEventListener 'mouseenter', ->
+      currentOpened = document.querySelector('.details')
+      if currentOpened == null
+        self.openDay this
+      else
+        currentOpened.addEventListener 'webkitAnimationEnd', ->
+          currentOpened.parentNode.removeChild currentOpened
+          return
+        currentOpened.addEventListener 'oanimationend', ->
+          currentOpened.parentNode.removeChild currentOpened
+          return
+        currentOpened.addEventListener 'msAnimationEnd', ->
+          currentOpened.parentNode.removeChild currentOpened
+          return
+        currentOpened.addEventListener 'animationend', ->
+          currentOpened.parentNode.removeChild currentOpened
+
+        currentOpened.className = 'details out'
       return
+    outer.addEventListener 'mouseleave', ->
+      currentOpened = document.querySelector('.details')
+      currentOpened.className = 'details out'
+      currentOpened.parentNode.removeChild currentOpened
     #Day Name
     name = createElement('div', 'day-name', day.format('ddd'))
     #Day Number
@@ -137,6 +153,11 @@
     outer.appendChild name
     outer.appendChild number
     outer.appendChild events
+
+    outer.addEventListener 'click', ->
+      window.location.href = './events/new'
+      return
+
     @week.appendChild outer
     return
 

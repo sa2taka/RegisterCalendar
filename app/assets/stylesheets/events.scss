@@ -31,7 +31,7 @@ body {
   transform: translate3d(0, 0, 0);
   width: 420px;
   margin: 0 auto;
-  height: 570px;
+  height: 700px;
   overflow: hidden;
 }
 
@@ -123,10 +123,10 @@ body {
   position: relative;
   z-index: 100;
   &.other {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.5);
   }
   &.today {
-    background: rgba(110, 149, 13, 0.61);
+    background: rgba(183, 224, 80, 1);
   }
 }
 
