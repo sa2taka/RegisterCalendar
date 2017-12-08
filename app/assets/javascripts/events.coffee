@@ -218,8 +218,6 @@
       details.appendChild arrow
       el.parentNode.appendChild details
     todaysEvents = @events.reduce(((memo, ev) ->
-      console.log(ev.date)
-      console.log(day)
       if moment(ev.date).isSame(day, 'day')
         memo.push ev
       memo
@@ -297,22 +295,6 @@
     return
 
   window.Calendar = Calendar
-  return
-!do ->
-  data = [
-    {
-      eventName: 'Lunch Meeting w/ Mark'
-      calendar: 'Work'
-      color: 'orange'
-      date: '2017-12-5'
-    }
-  ]
-
-  $ ->
-    calendar = new Calendar('#calendar', data)
-
-  addDate = (ev) ->
-
   return
 
 # ---
