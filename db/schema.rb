@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171130061409) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "event_date"
+    t.date "event_date"
     t.time "start"
     t.time "end"
     t.string "color"

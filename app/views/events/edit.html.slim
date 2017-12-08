@@ -1,9 +1,10 @@
-div.text-center
-  h1 Editing event
+div.row
+  div.col-md-6.col-md-offset-3
+    h1 Editing event
 
-== render 'forms'
+    == render 'form'
 
-div.text-center
-  => link_to 'Show', @event
-  '|
-  =< link_to 'Back', events_path
+    div.text-center
+      => link_to 'Show', @event
+      '|
+      =< link_to 'Back', events_path
