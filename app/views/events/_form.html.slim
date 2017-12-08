@@ -13,24 +13,32 @@
       = render 'member_form', f: mem_form
     = link_to_add_association 'メンバーを追加', f, :event_members, class: 'btn btn-default'
   .field
+    = f.label :event_date
+    = f.text_field :event_date, class: 'input-group date', id: 'datePicker'
+  .field
     = f.label :start
-    = f.text_field :start, class: 'input-group date', id: 'datetimepickerPonvire'
+    = f.text_field :start, class: 'input-group date', id: 'startPicker'
   .field
     = f.label :end
-    = f.text_field :end, class: 'input-group date', id: 'datetimepickerPonvire2'
+    = f.text_field :end, class: 'input-group date', id: 'endPicker'
 
   .actions = f.submit
 
 javascript:
   $(function () {
-    $('#datetimepickerPonvire').datetimepicker({
+    $('#datePicker').datetimepicker({
       locale: 'ja',
       viewMode: 'days',
-      format: 'YYYY/MM/DD HH:mm'
+      format: 'YYYY/MM/DD'
     });
-    $('#datetimepickerPonvire2').datetimepicker({
+    $('#startPicker').datetimepicker({
       locale: 'ja',
       viewMode: 'days',
-      format: 'YYYY/MM/DD HH:mm'
+      format: 'HH:mm'
+    });
+    $('#endPicker').datetimepicker({
+      locale: 'ja',
+      viewMode: 'days',
+      format: 'HH:mm'
     });
   });
