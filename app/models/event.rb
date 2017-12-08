@@ -6,5 +6,5 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :members
 
   validates :start, presence: true
-  validates :end, presence: true
+  validates :event_date, presence: true
 end

@@ -9,6 +9,7 @@ div.row
     table.table
       thead
         tr
+          th Event_date
           th Start
           th End
           th
@@ -18,6 +19,7 @@ div.row
       tbody
         - @events.each do |event|
           tr
+            td = event.event_date
             td = event.start
             td = event.end
             td = link_to 'Show', event, class:"btn btn-info"
