@@ -130,7 +130,15 @@
         isDetailShowing = true
         preOpenDay = day
       else
-        window.location.href = './events/new'
+        url = './events/new'
+        isDetailShowing = false
+        preOpenDay = null
+
+        header = document.querySelector('.header')
+        text = header.getElementsByTagName('h1')[0].innerText.split(" ")
+        year = text[0]
+        month = text[1].replace('月', '')
+        window.location.href = './events/new?day=' + year + "/" + month + "/" + day
         return
 
     #Day Name
