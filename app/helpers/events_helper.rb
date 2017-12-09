@@ -8,7 +8,7 @@ module EventsHelper
       element['date'] = ev.event_date.to_s
 
       event_name = ""
-      event_name += "#{Tod::TimeOfDay(ev.start).to_s} 〜 #{Tod::TimeOfDay(ev.end).to_s}, "
+      event_name += "#{Tod::TimeOfDay(ev.start).to_s.slice(0, 5)} 〜 #{Tod::TimeOfDay(ev.end).to_s.slice(0, 5)}, "
       event_name += "Member:"
       ev.members.each do |member|
         event_name += "#{member.name} "
