@@ -14,14 +14,18 @@
     = link_to_add_association 'メンバーを追加', f, :event_members, class: 'btn btn-default'
     = link_to '新規メンバーの作成', :new_member, class: 'btn btn-default'
   .field
-    = f.label :event_date
+    = f.label :event_date, "イベント日時"
     = f.text_field :event_date, class: 'input-group date', id: 'datePicker'
   .field
-    = f.label :start
+    = f.label :start, "開始時間"
     = f.text_field :start, class: 'input-group date', id: 'startPicker'
   .field
-    = f.label :end
+    = f.label :end, "終了予定時間"
     = f.text_field :end, class: 'input-group date', id: 'endPicker'
+  .field
+    = f.label :color, "カレンダーに表示する色"
+    - choices = [['青', :blue], ['橙', :orange], ['緑', :green], ['黄', :yellow]]
+    = f.select :color, choices, selected: :orange
 
   .actions = f.submit class: 'btn btn-success'
 

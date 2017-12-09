@@ -14,6 +14,7 @@ module EventsHelper
         event_name += "#{member.name} "
       end
       element['eventName'] = event_name
+      element['color'] = ev.color
       data << element
     end
     data.to_json
