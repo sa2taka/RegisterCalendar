@@ -6,17 +6,17 @@ module EventsHelper
     events.each do |ev|
       element = {}
       element['date'] = ev.event_date.to_s
+      event_time = "#{Tod::TimeOfDay(ev.start).to_s.slice(0, 5)} 〜 #{Tod::TimeOfDay(ev.end).to_s.slice(0, 5)}"
 
-      event_name = ""
-      event_name += "#{Tod::TimeOfDay(ev.start).to_s.slice(0, 5)} 〜 #{Tod::TimeOfDay(ev.end).to_s.slice(0, 5)}, "
-      event_name += "Member:"
+      event_member = ""
       ev.members.each do |member|
-        event_name += "#{member.name} "
+        event_member += "#{member.name} "
       end
-      element['eventName'] = event_name
+      element['eventTime'] = event_time
+      element['eventMember'] = event_member
       element['color'] = ev.color
       data << element
     end
-    data.to_json
+    data
   end
 end

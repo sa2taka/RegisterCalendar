@@ -7,7 +7,7 @@ br
 
 javascript:
   var data;
-  data = #{{event_data}};
+  data = #{{event_data.to_json}};
   console.log(data)
   $(document).ready(function(){
     var calendar;

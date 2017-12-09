@@ -233,9 +233,13 @@
     events.forEach (ev) ->
       div = createElement('div', 'event')
       square = createElement('div', 'event-category ' + ev.color)
-      span = createElement('span', '', ev.eventName)
+      time = createElement('span', '', ev.eventTime)
+      br = createElement('br')
+      member = createElement('span', '', 'メンバー: ' + ev.eventMember)
       div.appendChild square
-      div.appendChild span
+      div.appendChild time
+      div.appendChild br
+      div.appendChild member
       wrapper.appendChild div
       return
     if !events.length

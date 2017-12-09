@@ -4,19 +4,20 @@ div.row
     table.table
       thead
         tr
-          th Event_date
-          th Start
-          th End
-          th
+          th 予定日
+          th 時間
+          th メンバー
           th
           th
 
       tbody
+        - counter = 0
+        - data = event_data
         - @events.each do |event|
           tr
-            td = event.event_date
-            td = event.start
-            td = event.end
-            td = link_to 'Show', event, class:"btn btn-info"
+            td = data[counter]["date"]
+            td = data[counter]["eventTime"]
+            td = data[counter]["eventMember"]
             td = link_to 'Edit', edit_event_path(event), class:"btn btn-info"
             td = button_to 'Destory', event, method: :delete, class:"btn btn-danger"
+            - counter += 1
