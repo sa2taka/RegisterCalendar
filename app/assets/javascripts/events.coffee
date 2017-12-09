@@ -1,5 +1,7 @@
 !do ->
   today = moment()
+  isDetailShowing = false
+  preOpenDay = null
 
   Calendar = (selector, events) ->
     @el = document.querySelector(selector)
@@ -120,29 +122,17 @@
     @getWeek day
     #Outer Day
     outer = createElement('div', @getDayClass(day))
-    outer.addEventListener 'mouseenter', ->
-      currentOpened = document.querySelector('.details')
-      if currentOpened == null
-        self.openDay this
-      else
-        currentOpened.addEventListener 'webkitAnimationEnd', ->
-          currentOpened.parentNode.removeChild currentOpened
-          return
-        currentOpened.addEventListener 'oanimationend', ->
-          currentOpened.parentNode.removeChild currentOpened
-          return
-        currentOpened.addEventListener 'msAnimationEnd', ->
-          currentOpened.parentNode.removeChild currentOpened
-          return
-        currentOpened.addEventListener 'animationend', ->
-          currentOpened.parentNode.removeChild currentOpened
 
-        currentOpened.className = 'details out'
-      return
-    outer.addEventListener 'mouseleave', ->
-      currentOpened = document.querySelector('.details')
-      currentOpened.className = 'details out'
-      currentOpened.parentNode.removeChild currentOpened
+    outer.addEventListener 'click', ->
+      day = outer.getElementsByClassName("day-number")[0].innerText
+      if !isDetailShowing or day != preOpenDay
+        self.openDay(this)
+        isDetailShowing = true
+        preOpenDay = day
+      else
+        window.location.href = './events/new'
+        return
+
     #Day Name
     name = createElement('div', 'day-name', day.format('ddd'))
     #Day Number
@@ -153,10 +143,6 @@
     outer.appendChild name
     outer.appendChild number
     outer.appendChild events
-
-    outer.addEventListener 'click', ->
-      window.location.href = './events/new'
-      return
 
     @week.appendChild outer
     return
