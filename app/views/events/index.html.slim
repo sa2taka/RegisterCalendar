@@ -9,6 +9,7 @@ div.row
     table.table
       thead
         tr
+          th Event_date
           th Start
           th End
           th
@@ -18,6 +19,7 @@ div.row
       tbody
         - @events.each do |event|
           tr
+            td = event.event_date
             td = event.start
             td = event.end
             td = link_to 'Show', event, class:"btn btn-info"
@@ -27,18 +29,12 @@ div.row
 
     br
 div.text-center
-  = link_to 'イベントを追加する', new_event_path, class: "btn btn-primary"
-
+  = link_to 'イベントを追加する', new_event_path, class: "btn btn-info"
+  - event_data
 javascript:
   var data;
-  data = [
-    {
-      eventName: 'Lunch Meeting w/ Mark',
-      calendar: 'Work',
-      color: 'orange',
-      date: '2017-12-5'
-    }
-  ];
+  data = #{{event_data}};
+  console.log(data)
   $(document).ready(function(){
     var calendar;
     return calendar = new Calendar('#calendar', data);

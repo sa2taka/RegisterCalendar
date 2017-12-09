@@ -15,8 +15,8 @@ div.row
         - @members.each do |member|
           tr
             td = member.name
-            td = button_to '修正', edit_member_path(member), class:"btn btn-info"
-            td = button_to '削除', member, method: :delete, class:"btn btn-danger"
+            td = link_to '修正', edit_member_path(member), method: :get, class:"btn btn-info"
+            td = link_to '削除', member, method: :delete, class:"btn btn-danger"
 
     br
 

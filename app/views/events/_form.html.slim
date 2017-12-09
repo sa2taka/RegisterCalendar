@@ -10,27 +10,40 @@
   p メンバー
   #event_members
     = f.fields_for :event_members do |mem_form|
-      = render 'member_form', f: mem_form
+      = render 'event_member_fields', f: mem_form
     = link_to_add_association 'メンバーを追加', f, :event_members, class: 'btn btn-default'
+    = link_to '新規メンバーの作成', :new_member, class: 'btn btn-default'
   .field
-    = f.label :start
-    = f.text_field :start, class: 'input-group date', id: 'datetimepickerPonvire'
+    = f.label :event_date, "イベント日時"
+    = f.text_field :event_date, class: 'input-group date', id: 'datePicker'
   .field
-    = f.label :end
-    = f.text_field :end, class: 'input-group date', id: 'datetimepickerPonvire2'
+    = f.label :start, "開始時間"
+    = f.text_field :start, class: 'input-group date', id: 'startPicker'
+  .field
+    = f.label :end, "終了予定時間"
+    = f.text_field :end, class: 'input-group date', id: 'endPicker'
+  .field
+    = f.label :color, "カレンダーに表示する色"
+    - choices = [['青', :blue], ['橙', :orange], ['緑', :green], ['黄', :yellow]]
+    = f.select :color, choices, selected: :orange
 
-  .actions = f.submit
+  .actions = f.submit class: 'btn btn-success'
 
 javascript:
   $(function () {
-    $('#datetimepickerPonvire').datetimepicker({
+    $('#datePicker').datetimepicker({
       locale: 'ja',
       viewMode: 'days',
-      format: 'YYYY/MM/DD HH:mm'
+      format: 'YYYY/MM/DD'
     });
-    $('#datetimepickerPonvire2').datetimepicker({
+    $('#startPicker').datetimepicker({
       locale: 'ja',
       viewMode: 'days',
-      format: 'YYYY/MM/DD HH:mm'
+      format: 'HH:mm'
+    });
+    $('#endPicker').datetimepicker({
+      locale: 'ja',
+      viewMode: 'days',
+      format: 'HH:mm'
     });
   });
