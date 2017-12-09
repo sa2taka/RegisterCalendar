@@ -13,5 +13,8 @@ html
           ul.nav.navbar-nav.navbar-left
             li = link_to "イベント一覧", events_url
             li = link_to "メンバー一覧", members_url
+          ul.nav.navbar-nav.navbar-right
+            li = link_to "イベント作成", new_event_url
+            li = link_to "メンバー作成", new_member_url
     .container
       = yield
