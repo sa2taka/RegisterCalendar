@@ -7,5 +7,11 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    div.container
+    header.navbar.navbar-fixed-top.navbar-inverse
+      .container
+        nav
+          ul.nav.navbar-nav.navbar-left
+            li = link_to "イベント一覧", events_url
+            li = link_to "メンバー一覧", members_url
+    .container
       = yield
