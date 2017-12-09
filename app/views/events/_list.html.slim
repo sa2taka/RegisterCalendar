@@ -1,0 +1,23 @@
+div.row
+  div.col-md-6.col-md-offset-3
+
+    table.table
+      thead
+        tr
+          th 予定日
+          th 時間
+          th メンバー
+          th
+          th
+
+      tbody
+        - counter = 0
+        - data = event_data
+        - @events.each do |event|
+          tr
+            td = data[counter]["date"]
+            td = data[counter]["eventTime"]
+            td = data[counter]["eventMember"]
+            td = link_to 'Edit', edit_event_path(event), class:"btn btn-info"
+            td = button_to 'Destory', event, method: :delete, class:"btn btn-danger"
+            - counter += 1

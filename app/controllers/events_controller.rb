@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.event_date = params["day"]
   end
 
   # GET /events/1/edit
@@ -69,6 +70,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:start, :end, event_members_attributes: [:id, :member_id, :_destroy])
+      params.require(:event).permit(:event_date, :start, :end, :color, event_members_attributes: [:id, :member_id, :_destroy])
     end
 end

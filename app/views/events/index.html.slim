@@ -1,28 +1,12 @@
-div.text-center
-  h1 Listing members
-
-div.row
-  div.col-md-6.col-md-offset-3
-
-    table.table
-      thead
-        tr
-          th Start
-          th End
-          th
-          th
-          th
-
-      tbody
-        - @events.each do |event|
-          tr
-            td = event.start
-            td = event.end
-            td = link_to 'Show', event, class:"btn btn-info"
-            td = link_to 'Edit', edit_event_path(event), class:"btn btn-info"
-            td = button_to 'Destory', event, method: :delete, class:"btn btn-danger"
-
-
-    br
-div.text-center
-  = link_to 'イベントを追加する', new_event_path, class: "btn btn-primary"
+ul.nav.nav-tabs
+  li.active
+    a href = "#cal-tab" data-toggle = "tab"
+      | カレンダー
+  li
+    a href = "#list-tab" data-toggle = "tab"
+      | イベント一覧
+.tab-content
+  #cal-tab.tab-pane.fade.in.active
+    = render "calendar"
+  #list-tab.tab-pane.fade
+    = render "list"
