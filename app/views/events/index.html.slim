@@ -30,17 +30,11 @@ div.row
     br
 div.text-center
   = link_to 'イベントを追加する', new_event_path, class: "btn btn-info"
-
+  - event_data
 javascript:
   var data;
-  data = [
-    {
-      eventName: 'Lunch Meeting w/ Mark',
-      calendar: 'Work',
-      color: 'orange',
-      date: '2017-12-5'
-    }
-  ];
+  data = #{{event_data}};
+  console.log(data)
   $(document).ready(function(){
     var calendar;
     return calendar = new Calendar('#calendar', data);
