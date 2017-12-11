@@ -14,8 +14,15 @@ html
             li = link_to "イベント一覧", events_url
             li = link_to "メンバー一覧", members_url
           ul.nav.navbar-nav.navbar-right
-            li = link_to "イベント作成", new_event_url
-            li = link_to "メンバー作成", new_member_url
+            - if(session[:is_login])
+              li = link_to "イベント作成", new_event_url
+              li = link_to "メンバー作成", new_member_url
+              li = link_to logout_path, method: :delete do
+                = fa_icon "sign-out", text: "ログアウト"
+
+            - else
+              li = link_to login_path do
+                = fa_icon "sign-in", text: "ログイン"
 
     - flash.each do |message_type, message|
       .text-center
