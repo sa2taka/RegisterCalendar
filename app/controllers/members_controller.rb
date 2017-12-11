@@ -14,16 +14,19 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
+    escape
     @member = Member.new
   end
 
   # GET /members/1/edit
   def edit
+    escape
   end
 
   # POST /members
   # POST /members.json
   def create
+    escape
     @member = Member.new(member_params)
 
     respond_to do |format|
@@ -40,6 +43,7 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
+    escape
     respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to @member, notice: 'メンバーが更新されました' }
@@ -54,6 +58,7 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
+    escape
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
