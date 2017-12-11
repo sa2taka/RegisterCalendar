@@ -3,7 +3,7 @@
   isDetailShowing = false
   preOpenDay = null
 
-  Calendar = (selector, events) ->
+  Calendar = (selector, events, isLogin) ->
     @el = document.querySelector(selector)
     @events = events
     @current = moment().date(1)
@@ -125,7 +125,7 @@
 
     outer.addEventListener 'click', ->
       day = outer.getElementsByClassName("day-number")[0].innerText
-      if !isDetailShowing or day != preOpenDay
+      if !isLogin or !isDetailShowing or day != preOpenDay
         self.openDay(this)
         isDetailShowing = true
         preOpenDay = day

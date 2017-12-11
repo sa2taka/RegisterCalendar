@@ -8,17 +8,16 @@ div.row
         tr
           th 名前
           th
-          th
-          th
+          - if session[:is_login]
+            th
+            th
 
       tbody
         - @members.each do |member|
           tr
             td = member.name
-            td = link_to '修正', edit_member_path(member), method: :get, class:"btn btn-info"
-            td = link_to '削除', member, method: :delete, class:"btn btn-danger"
+            - if session[:is_login]
+              td = link_to '修正', edit_member_path(member), method: :get, class:"btn btn-info"
+              td = link_to '削除', member, method: :delete, class:"btn btn-danger"
 
     br
-
-div.text-center
-  = link_to "メンバーを追加する", new_member_path, class: "btn btn-primary"

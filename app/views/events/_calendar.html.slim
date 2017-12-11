@@ -6,12 +6,13 @@ div.text-center
 br
 
 javascript:
-  var data;
-  data = #{{event_data.to_json}};
+  var data
+  data = #{{ event_data.to_json }}
+  isLogin = #{{ session[:is_login] }}
   console.log(data)
   $(document).ready(function(){
     var calendar;
-    return calendar = new Calendar('#calendar', data);
+    return calendar = new Calendar('#calendar', data, isLogin);
   });
 
   // ---
