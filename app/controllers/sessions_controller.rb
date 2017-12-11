@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
     if params[:session][:id] == "sat" && digest.to_s == PASS_DIGEST
       login
-      redirect_to events_url
+      redirect_to root_url
     else
       flash.now[:danger] = "idかパスコードが間違っています"
       render 'new'
@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logout
+    redirect_to root_url
   end
-
 end
