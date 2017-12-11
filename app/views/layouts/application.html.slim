@@ -16,5 +16,10 @@ html
           ul.nav.navbar-nav.navbar-right
             li = link_to "イベント作成", new_event_url
             li = link_to "メンバー作成", new_member_url
+
+    - flash.each do |message_type, message|
+      .text-center
+        div class=("alert alert-#{message_type}") = message
+
     .container
       = yield
