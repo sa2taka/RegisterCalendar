@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require dataTables/jquery.dataTables
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker

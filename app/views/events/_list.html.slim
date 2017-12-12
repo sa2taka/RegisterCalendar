@@ -1,7 +1,7 @@
 div.row
   div.col-md-6.col-md-offset-3
 
-    table.table
+    table#events.table.table-striped.table-bordered
       thead
         tr
           th 予定日
@@ -23,3 +23,15 @@ div.row
               td = link_to 'Edit', edit_event_path(event), class:"btn btn-info"
               td = button_to 'Destory', event, method: :delete, class:"btn btn-danger"
             - counter += 1
+
+javascript:
+  // デフォルトの設定を変更
+  $.extend( $.fn.dataTable.defaults, {
+      language: {
+          url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+      }
+  });
+  $(document).ready(function(){
+    console.log($("#events"))
+    $("#events").DataTable()
+  });
