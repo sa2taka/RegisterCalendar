@@ -32,8 +32,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        @events = Event.all
+        format.html { render :index }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -47,8 +47,8 @@ class EventsController < ApplicationController
     escape
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+        @events = Event.all
+        format.html { render :index }
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
