@@ -7,5 +7,5 @@ class Event < ApplicationRecord
 
   validates :start, presence: true
   validates :event_date, presence: true
-  validates :members, presence: true
+  validates :event_members, presence: true
 end
